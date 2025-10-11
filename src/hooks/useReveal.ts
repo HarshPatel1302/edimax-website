@@ -71,7 +71,7 @@ export function useReveal(options: UseRevealOptions = {}) {
 }
 
 export function useStaggerReveal(options: UseRevealOptions = {}) {
-  const containerRef = useRef<HTMLElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   
   const {
     delay = 0,

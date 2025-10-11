@@ -1,10 +1,6 @@
 import { Section } from '@/components/section'
 import { ContactForm } from '@/components/contact-form'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { contactInfo } from '@/lib/constants'
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
-import Link from 'next/link'
+import { Card, CardContent } from '@/components/ui/card'
 
 export const metadata = {
   title: 'Contact Us',
