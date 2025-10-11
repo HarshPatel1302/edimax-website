@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { navigation } from '@/lib/constants'
+import Image from 'next/image'
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -22,16 +23,14 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="text-white">
-              <div className="text-xl sm:text-2xl font-bold leading-tight">
-                <span className="text-white">ED</span>
-                <span className="text-[#b61d23]">!</span>
-                <span className="text-white">MAX</span>
-              </div>
-              <div className="text-xs sm:text-sm font-semibold">
-                CREATIONS
-              </div>
-            </div>
+            <Image
+              src="/brand/edimax-white.png"
+              alt="Edimax Creations Logo"
+              width={120}
+              height={40}
+              className="h-8 sm:h-10 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

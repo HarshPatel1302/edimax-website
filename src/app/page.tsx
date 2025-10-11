@@ -61,9 +61,6 @@ export default function Home() {
                     </Link>
                   </Button>
                 </CardContent>
-                
-                {/* Hover gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-accent-start/5 to-accent-end/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Card>
             ))}
           </div>

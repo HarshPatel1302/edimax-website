@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
 import Image from 'next/image'
 import { CLIENT_LOGOS } from '@/lib/client-logos'
 
@@ -15,37 +14,57 @@ export function MarqueeLogos() {
     const marquee = marqueeRef.current
     if (!marquee) return
 
-    // Calculate total width of one set of logos
-    const logos = marquee.children
-    let totalWidth = 0
+    // Wait for images to load before calculating
+    const images = marquee.querySelectorAll('img')
+    let loadedImages = 0
     
-    // Add padding between logos (2rem = 32px)
-    for (let i = 0; i < CLIENT_LOGOS.length; i++) {
-      totalWidth += logos[i].getBoundingClientRect().width + 32
+    const checkIfAllLoaded = () => {
+      loadedImages++
+      if (loadedImages === images.length) {
+        startAnimation()
+      }
     }
 
-    // Create seamless infinite scroll
-    gsap.to(marquee, {
-      x: -totalWidth,
-      duration: totalWidth / 50, // Adjust speed: pixels per second
-      ease: 'none',
-      repeat: -1,
-      modifiers: {
-        x: gsap.utils.unitize(x => parseFloat(x) % totalWidth)
+    images.forEach(img => {
+      if (img.complete) {
+        checkIfAllLoaded()
+      } else {
+        img.onload = checkIfAllLoaded
+        img.onerror = checkIfAllLoaded
       }
     })
 
+    const startAnimation = () => {
+      // Calculate total width of one complete set of logos (first 4 logos)
+      const logos = marquee.children
+      let totalWidth = 0
+      
+      // Measure actual width of each logo container in the first set only
+      for (let i = 0; i < CLIENT_LOGOS.length; i++) {
+        totalWidth += logos[i].getBoundingClientRect().width
+      }
+
+      // Create seamless infinite scroll using CSS animation
+      const duration = totalWidth / 35 // 35 pixels per second
+      
+      marquee.style.setProperty('--marquee-width', `${totalWidth}px`)
+      marquee.style.setProperty('--marquee-duration', `${duration}s`)
+      marquee.style.animation = `marquee-seamless var(--marquee-duration) linear infinite`
+    }
+
     return () => {
-      gsap.killTweensOf(marquee)
+      if (marquee) {
+        marquee.style.animation = 'none'
+      }
     }
   }, [])
 
   return (
-    <div className="relative overflow-hidden bg-muted/50 py-6">
+    <div className="relative overflow-hidden bg-muted/50 py-8">
       <div className="absolute inset-0 bg-gradient-to-r from-muted/50 via-transparent to-muted/50" />
       
       <div className="relative">
-        <div className="flex items-center justify-center mb-4">
+        <div className="flex items-center justify-center mb-6">
           <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
             Trusted by brands across platforms
           </p>
@@ -57,17 +76,17 @@ export function MarqueeLogos() {
             className="flex items-center whitespace-nowrap"
           >
             {/* Duplicate the logos array multiple times for seamless loop */}
-            {[...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS].map((logo, index) => (
+            {[...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS].map((logo, index) => (
               <div
                 key={`logo-${index}`}
-                className="flex-shrink-0 flex items-center justify-center px-8"
+                className="flex-shrink-0 flex items-center justify-center px-2"
               >
                 <Image
                   src={logo.src}
                   alt={logo.alt}
-                  width={120}
-                  height={60}
-                  className="h-12 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+                  width={180}
+                  height={90}
+                  className="h-16 sm:h-20 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
                   priority={false}
                 />
               </div>

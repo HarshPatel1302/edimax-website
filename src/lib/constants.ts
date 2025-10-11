@@ -203,6 +203,7 @@ export const navigation = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Services", href: "/services" },
+  { name: "Portfolio", href: "/portfolio" },
   { name: "Contact", href: "/contact" }
 ]
 
@@ -221,6 +222,7 @@ export const footerLinks = {
   company: [
     { name: "About Us", href: "/about" },
     { name: "Our Services", href: "/services" },
+    { name: "Portfolio", href: "/portfolio" },
     { name: "Contact", href: "/contact" },
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" }

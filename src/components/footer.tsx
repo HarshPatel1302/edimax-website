@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { MapPin, Phone, Mail } from 'lucide-react'
 import { contactInfo, footerLinks } from '@/lib/constants'
+import Image from 'next/image'
 
 export function Footer() {
   return (
@@ -10,16 +11,13 @@ export function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center mb-4">
-              <div className="text-white">
-                <div className="text-xl sm:text-2xl font-bold leading-tight">
-                  <span className="text-white">ED</span>
-                  <span className="text-[#b61d23]">!</span>
-                  <span className="text-white">MAX</span>
-                </div>
-                <div className="text-xs sm:text-sm font-semibold">
-                  CREATIONS
-                </div>
-              </div>
+              <Image
+                src="/brand/edimax-white.png"
+                alt="Edimax Creations Logo"
+                width={120}
+                height={40}
+                className="h-8 sm:h-10 w-auto"
+              />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
               Lifestyle-Driven Digital Marketing Agency. We blend creativity, strategy, and storytelling to build lifestyle-driven brands.
@@ -76,31 +74,28 @@ export function Footer() {
                 </div>
               </div>
               
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-accent-start flex-shrink-0" />
-                <Link
-                  href={`tel:${contactInfo.phone}`}
-                  className="text-sm text-muted-foreground hover:text-off-white transition-colors"
-                >
-                  {contactInfo.phone}
-                </Link>
-              </div>
-              
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-accent-start flex-shrink-0" />
-                <Link
-                  href={`mailto:${contactInfo.email}`}
-                  className="text-sm text-muted-foreground hover:text-off-white transition-colors"
-                >
-                  {contactInfo.email}
-                </Link>
+              <div className="flex items-start space-x-3">
+                <Phone className="w-5 h-5 text-accent-start mt-0.5 flex-shrink-0" />
+                <div>
+                  <Link
+                    href={`tel:${contactInfo.phone}`}
+                    className="text-sm text-muted-foreground hover:text-off-white transition-colors"
+                  >
+                    {contactInfo.phone}
+                  </Link>
+                </div>
               </div>
               
               <div className="flex items-start space-x-3">
-                <Clock className="w-5 h-5 text-accent-start mt-0.5 flex-shrink-0" />
-                <p className="text-sm text-muted-foreground">
-                  {contactInfo.hours}
-                </p>
+                <Mail className="w-5 h-5 text-accent-start mt-0.5 flex-shrink-0" />
+                <div>
+                  <Link
+                    href={`mailto:${contactInfo.email}`}
+                    className="text-sm text-muted-foreground hover:text-off-white transition-colors"
+                  >
+                    {contactInfo.email}
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

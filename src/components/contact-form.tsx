@@ -120,7 +120,7 @@ export function ContactForm() {
                     <FormLabel>Mobile Number *</FormLabel>
                     <FormControl>
                       <Input 
-                        placeholder="+91 75062 26350" 
+                        placeholder="7977051147" 
                         {...field} 
                         type="tel"
                       />
