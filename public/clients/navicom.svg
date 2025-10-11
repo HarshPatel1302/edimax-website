@@ -1,0 +1,6 @@
+<svg width="200" height="80" viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="80" fill="black"/>
+  <text x="100" y="50" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#808080">navi</text>
+  <text x="155" y="50" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#FF8C00">com</text>
+  <text x="185" y="35" font-size="12" fill="#C0C0C0">™</text>
+</svg>
