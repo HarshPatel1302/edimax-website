@@ -5,18 +5,18 @@ import { contactInfo, footerLinks } from '@/lib/constants'
 export function Footer() {
   return (
     <footer className="bg-charcoal text-off-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Brand */}
-          <div className="lg:col-span-1">
+          <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center mb-4">
               <div className="text-white">
-                <div className="text-2xl font-bold leading-tight">
+                <div className="text-xl sm:text-2xl font-bold leading-tight">
                   <span className="text-white">ED</span>
                   <span className="text-[#b61d23]">!</span>
                   <span className="text-white">MAX</span>
                 </div>
-                <div className="text-sm font-semibold">
+                <div className="text-xs sm:text-sm font-semibold">
                   CREATIONS
                 </div>
               </div>

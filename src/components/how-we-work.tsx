@@ -61,7 +61,7 @@ export function HowWeWork() {
         {/* Timeline */}
         <div 
           ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-4"
         >
           {timelineSteps.map((step, index) => {
             const IconComponent = step.icon
@@ -72,7 +72,7 @@ export function HowWeWork() {
               >
                 {/* Connection line for desktop */}
                 {index < timelineSteps.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-accent-start to-accent-end z-0" />
+                  <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-accent-start to-accent-end z-0" />
                 )}
                 
                 <CardContent className="p-6 text-center relative z-10">
@@ -105,15 +105,15 @@ export function HowWeWork() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-8">
-          <p className="text-lg text-muted-foreground mb-6">
+        <div className="text-center mt-6 sm:mt-8">
+          <p className="text-base sm:text-lg text-muted-foreground mb-4 sm:mb-6">
             Ready to start your brand transformation?
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-[#b61d23] hover:bg-[#9a171c] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <button className="bg-[#b61d23] hover:bg-[#9a171c] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto">
               Get Started Today
             </button>
-            <button className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-background px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+            <button className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-background px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-300 w-full sm:w-auto">
               Learn More
             </button>
           </div>

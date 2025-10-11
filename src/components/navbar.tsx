@@ -23,25 +23,25 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <div className="text-white">
-              <div className="text-2xl font-bold leading-tight">
+              <div className="text-xl sm:text-2xl font-bold leading-tight">
                 <span className="text-white">ED</span>
                 <span className="text-[#b61d23]">!</span>
                 <span className="text-white">MAX</span>
               </div>
-              <div className="text-sm font-semibold">
+              <div className="text-xs sm:text-sm font-semibold">
                 CREATIONS
               </div>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-accent-start",
+                  "text-sm lg:text-base font-medium transition-colors hover:text-accent-start",
                   pathname === item.href
                     ? "text-accent-start"
                     : "text-white"

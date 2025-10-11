@@ -121,24 +121,24 @@ export function ServiceCard({
     <Card 
       ref={cardRef}
       className={cn(
-        "group relative overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-off-white to-muted",
+        "group relative overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-off-white to-muted h-full",
         className
       )}
     >
       {/* Gradient overlay on hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent-start/5 to-accent-end/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       
-      <CardHeader className="relative z-10 pb-4">
-        <div className="w-12 h-12 bg-gradient-to-r from-accent-start to-accent-end rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-          {IconComponent && <IconComponent className="w-6 h-6 text-off-white" />}
+      <CardHeader className="relative z-10 pb-3 sm:pb-4 px-4 sm:px-6 pt-4 sm:pt-6">
+        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-accent-start to-accent-end rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
+          {IconComponent && <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-off-white" />}
         </div>
-        <CardTitle className="text-xl font-semibold text-charcoal group-hover:text-accent-start transition-colors duration-300">
+        <CardTitle className="text-lg sm:text-xl font-semibold text-charcoal group-hover:text-accent-start transition-colors duration-300">
           {title}
         </CardTitle>
       </CardHeader>
       
-      <CardContent className="relative z-10">
-        <p className="text-muted-foreground mb-6 leading-relaxed">
+      <CardContent className="relative z-10 px-4 sm:px-6 pb-4 sm:pb-6">
+        <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 leading-relaxed">
           {description}
         </p>
         

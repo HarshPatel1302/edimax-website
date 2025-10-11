@@ -69,6 +69,25 @@ body {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  /* Prevent horizontal scroll on mobile */
+  overflow-x: hidden;
+}
+
+/* Body optimizations */
+body {
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+  /* Better touch scrolling on mobile */
+  -webkit-overflow-scrolling: touch;
+  /* Prevent zoom on input focus (iOS) */
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Container improvements */
+.container {
+  /* Ensure containers don't exceed viewport */
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Reduced motion support */
@@ -83,6 +102,55 @@ html {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Prevent horizontal scroll on small screens */
+  * {
+    max-width: 100%;
+  }
+  
+  /* Better touch targets */
+  button, a, input, select, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve text readability */
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  /* Better spacing for mobile */
+  .space-y-4 > * + * {
+    margin-top: 1rem;
+  }
+  
+  .space-y-6 > * + * {
+    margin-top: 1.5rem;
+  }
+  
+  .space-y-8 > * + * {
+    margin-top: 2rem;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Better spacing for tablets */
+  .space-y-6 > * + * {
+    margin-top: 1.5rem;
+  }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1440px) {
+  /* Better spacing for large screens */
+  .space-y-8 > * + * {
+    margin-top: 2.5rem;
   }
 }
 

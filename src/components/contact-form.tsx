@@ -58,18 +58,18 @@ export function ContactForm() {
 
   return (
         <Card className="w-full max-w-2xl mx-auto shadow-xl border-0 bg-gradient-to-br from-muted/50 to-background">
-      <CardHeader className="text-center pb-6">
-        <CardTitle className="font-display text-2xl font-bold text-foreground">
+      <CardHeader className="text-center pb-4 sm:pb-6 px-4 sm:px-6">
+        <CardTitle className="font-display text-xl sm:text-2xl font-bold text-foreground">
           Let's Work Together
         </CardTitle>
-        <p className="text-muted-foreground">
+        <p className="text-sm sm:text-base text-muted-foreground">
           Fill out the form below and we'll get back to you within 24 hours.
         </p>
       </CardHeader>
       
-      <CardContent>
+      <CardContent className="px-4 sm:px-6">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
             {/* Honeypot field - hidden from users */}
             <input
               type="text"
@@ -214,7 +214,7 @@ export function ContactForm() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#b61d23] hover:bg-[#9a171c] text-white py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              className="w-full bg-[#b61d23] hover:bg-[#9a171c] text-white py-3 sm:py-4 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
             >
               {isSubmitting ? (
                 <>

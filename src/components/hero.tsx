@@ -108,15 +108,15 @@ export function Hero() {
       ref={heroRef}
       className="relative min-h-screen flex items-center overflow-hidden bg-background"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8 sm:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Content - 9/12 width */}
           <div className="lg:col-span-9">
             <div className="max-w-4xl">
               {/* Headline */}
               <h1 
                 ref={headlineRef}
-                className="font-sans text-4xl sm:text-5xl lg:text-7xl font-black text-foreground mb-6 leading-tight tracking-wide"
+                className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-foreground mb-4 sm:mb-6 leading-tight tracking-wide"
               >
                 {heroContent.headline}
               </h1>
@@ -124,7 +124,7 @@ export function Hero() {
               {/* Subline */}
               <p 
                 ref={sublineRef}
-                className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-6 max-w-3xl"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-4 sm:mb-6 max-w-3xl"
               >
                 {heroContent.subline}
               </p>
@@ -132,7 +132,7 @@ export function Hero() {
               {/* Quick Summary */}
               <p 
                 ref={summaryRef}
-                className="text-base sm:text-lg text-foreground/80 mb-8 max-w-2xl leading-relaxed"
+                className="text-sm sm:text-base md:text-lg text-foreground/80 mb-6 sm:mb-8 max-w-2xl leading-relaxed"
               >
                 {heroContent.quickSummary}
               </p>
@@ -140,13 +140,13 @@ export function Hero() {
               {/* CTAs */}
               <div 
                 ref={ctaRef}
-                className="flex flex-col sm:flex-row gap-4"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4"
               >
                 <Button
                   ref={primaryButtonRef}
                   onClick={handleScrollToServices}
                   size="lg"
-                  className="bg-[#b61d23] hover:bg-[#9a171c] text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="bg-[#b61d23] hover:bg-[#9a171c] text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
                 >
                   <span className="relative z-10">{heroContent.primaryCTA}</span>
                 </Button>
@@ -155,7 +155,7 @@ export function Hero() {
                   onClick={handleScrollToContact}
                   variant="outline"
                   size="lg"
-                  className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-background px-8 py-3 text-lg font-semibold transition-all duration-300"
+                  className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-background px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold transition-all duration-300 w-full sm:w-auto"
                 >
                   {heroContent.secondaryCTA}
                 </Button>
@@ -165,18 +165,18 @@ export function Hero() {
 
           {/* Right Content - 3/12 width for decoration */}
           <div className="lg:col-span-3 hidden lg:block">
-          <div className="relative">
-            {/* Decorative elements */}
-            <div className="w-64 h-64 bg-[#b61d23]/20 rounded-full blur-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-            <div className="w-32 h-32 bg-[#b61d23]/30 rounded-full blur-2xl absolute top-1/3 right-0" />
-            <div className="w-24 h-24 bg-[#b61d23]/40 rounded-full blur-xl absolute bottom-1/4 left-0" />
-          </div>
+            <div className="relative">
+              {/* Decorative elements */}
+              <div className="w-48 xl:w-64 h-48 xl:h-64 bg-[#b61d23]/20 rounded-full blur-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+              <div className="w-24 xl:w-32 h-24 xl:h-32 bg-[#b61d23]/30 rounded-full blur-2xl absolute top-1/3 right-0" />
+              <div className="w-16 xl:w-24 h-16 xl:h-24 bg-[#b61d23]/40 rounded-full blur-xl absolute bottom-1/4 left-0" />
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      {/* Scroll Indicator - Hidden on mobile */}
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block">
         <div className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-foreground/50 rounded-full mt-2 animate-pulse"></div>
         </div>
