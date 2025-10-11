@@ -81,8 +81,8 @@ export default function AboutPage() {
         title="Meet the Creators"
         description="The passionate individuals behind Edimax Creations."
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[1, 2, 3].map((member) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {[1, 2].map((member) => (
             <Card key={member} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-off-white to-muted">
               <CardContent className="p-8 text-center">
                 <div className="w-24 h-24 bg-gradient-to-r from-accent-start to-accent-end rounded-full flex items-center justify-center mx-auto mb-6">
