@@ -88,13 +88,13 @@ export default function AboutPage() {
               id: 1,
               name: "Mr. Harsh Jagtap",
               role: "Founder",
-              image: "/team/team-member-1.jpg",
+              image: "/team/team-member-1.JPG",
             },
             {
               id: 2,
               name: "Ms. Jikcy Joji",
               role: "Co-Founder",
-              image: "/team/team-member-2.jpg",
+              image: "/team/team-member-2.JPG",
             }
           ].map((member) => (
             <Card key={member.id} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative aspect-square">
