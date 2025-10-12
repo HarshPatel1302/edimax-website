@@ -1,15 +1,24 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { CLIENT_LOGOS } from '@/lib/client-logos'
 
 export function MarqueeLogos() {
   const marqueeRef = useRef<HTMLDivElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReducedMotion) return
+
+    // Check if device is mobile
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    checkIsMobile()
+    window.addEventListener('resize', checkIsMobile)
 
     const marquee = marqueeRef.current
     if (!marquee) return
@@ -41,11 +50,15 @@ export function MarqueeLogos() {
       
       // Measure actual width of each logo container in the first set only
       for (let i = 0; i < CLIENT_LOGOS.length; i++) {
-        totalWidth += logos[i].getBoundingClientRect().width
+        const logoElement = logos[i] as HTMLElement
+        if (logoElement) {
+          totalWidth += logoElement.getBoundingClientRect().width
+        }
       }
 
-      // Create seamless infinite scroll using CSS animation
-      const duration = totalWidth / 35 // 35 pixels per second
+      // Adjust speed based on device type
+      const baseSpeed = isMobile ? 25 : 35 // Slower on mobile for better visibility
+      const duration = totalWidth / baseSpeed
       
       marquee.style.setProperty('--marquee-width', `${totalWidth}px`)
       marquee.style.setProperty('--marquee-duration', `${duration}s`)
@@ -53,11 +66,12 @@ export function MarqueeLogos() {
     }
 
     return () => {
+      window.removeEventListener('resize', checkIsMobile)
       if (marquee) {
         marquee.style.animation = 'none'
       }
     }
-  }, [])
+  }, [isMobile])
 
   return (
     <div className="relative overflow-hidden bg-muted/50 py-8">
@@ -73,20 +87,20 @@ export function MarqueeLogos() {
         <div className="overflow-hidden">
           <div 
             ref={marqueeRef}
-            className="flex items-center whitespace-nowrap"
+            className="marquee-container flex items-center whitespace-nowrap"
           >
             {/* Duplicate the logos array multiple times for seamless loop */}
             {[...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS].map((logo, index) => (
               <div
                 key={`logo-${index}`}
-                className="flex-shrink-0 flex items-center justify-center px-2"
+                className={`flex-shrink-0 flex items-center justify-center ${isMobile ? 'px-1' : 'px-2'}`}
               >
                 <Image
                   src={logo.src}
                   alt={logo.alt}
                   width={180}
                   height={90}
-                  className="h-16 sm:h-20 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+                  className={`${isMobile ? 'h-12 sm:h-16' : 'h-16 sm:h-20'} w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300`}
                   priority={false}
                 />
               </div>

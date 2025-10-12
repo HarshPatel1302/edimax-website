@@ -190,13 +190,8 @@ export const whyChooseUs = [
 
 export const platforms = [
   { name: "Instagram", logo: "📷" },
-  { name: "Facebook", logo: "📘" },
   { name: "LinkedIn", logo: "💼" },
-  { name: "Twitter", logo: "🐦" },
-  { name: "YouTube", logo: "📺" },
-  { name: "TikTok", logo: "🎵" },
   { name: "Google", logo: "🔍" },
-  { name: "Pinterest", logo: "📌" }
 ]
 
 export const navigation = [
@@ -209,9 +204,8 @@ export const navigation = [
 
 export const contactInfo = {
   address: "Navi Mumbai, Maharashtra",
-  phone: "+91 75062 26350",
+  phone: "+91 83690 92499 / +91 75062 26350",
   email: "edimaxcreations@gmail.com",
-  hours: "Mon - Fri: 9:00 AM - 6:00 PM IST",
 }
 
 export const footerLinks = {

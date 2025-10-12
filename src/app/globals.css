@@ -191,3 +191,27 @@ body {
     transform: translateX(calc(-1 * var(--marquee-width)));
   }
 }
+
+/* Mobile-specific marquee improvements */
+@media (max-width: 768px) {
+  .marquee-container {
+    /* Improve performance on mobile */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  .marquee-container > div {
+    /* Ensure smooth animation on mobile */
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-container {
+    animation: none !important;
+  }
+}

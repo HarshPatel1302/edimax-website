@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { aboutContent } from '@/lib/constants'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, Target, Users, Lightbulb, Heart } from 'lucide-react'
 
 export const metadata = {
@@ -82,21 +83,41 @@ export default function AboutPage() {
         description="The passionate individuals behind Edimax Creations."
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[1, 2].map((member) => (
-            <Card key={member} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-off-white to-muted">
-              <CardContent className="p-8 text-center">
-                <div className="w-24 h-24 bg-gradient-to-r from-accent-start to-accent-end rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Users className="w-12 h-12 text-off-white" />
+          {[
+            {
+              id: 1,
+              name: "Mr. Harsh Jagtap",
+              role: "Founder",
+              image: "/team/team-member-1.jpg",
+            },
+            {
+              id: 2,
+              name: "Ms. Jikcy Joji",
+              role: "Co-Founder",
+              image: "/team/team-member-2.jpg",
+            }
+          ].map((member) => (
+            <Card key={member.id} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative aspect-square">
+              <div className="absolute inset-0">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  className="object-cover object-center object-[center_30%]"
+                  priority
+                />
+                {/* Dark overlay for better text readability */}
+                <div className="absolute inset-0 bg-black/40 hover:bg-black/30 transition-all duration-300" />
+              </div>
+              <CardContent className="relative z-10 h-full flex flex-col justify-end p-8">
+                <div className="text-center text-white">
+                  <h3 className="font-semibold text-2xl mb-2 drop-shadow-lg">
+                    {member.name}
+                  </h3>
+                  <p className="text-lg font-medium drop-shadow-lg">
+                    {member.role}
+                  </p>
                 </div>
-                <h3 className="font-semibold text-xl text-charcoal mb-2">
-                  Team Member {member}
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  Digital Marketing Specialist
-                </p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Passionate about creating compelling digital experiences that drive results and build lasting brand connections.
-                </p>
               </CardContent>
             </Card>
           ))}

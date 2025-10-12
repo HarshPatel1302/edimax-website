@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { MapPin, Phone, Mail } from 'lucide-react'
+import { MapPin, Phone, Mail, Instagram, Linkedin } from 'lucide-react'
 import { contactInfo, footerLinks } from '@/lib/constants'
 import Image from 'next/image'
 
@@ -94,6 +94,34 @@ export function Footer() {
                     className="text-sm text-muted-foreground hover:text-off-white transition-colors"
                   >
                     {contactInfo.email}
+                  </Link>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <Instagram className="w-5 h-5 text-accent-start mt-0.5 flex-shrink-0" />
+                <div>
+                  <Link
+                    href="https://www.instagram.com/edimaxcreations__?igsh=bXpjaDJ2OGFybHFx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-off-white transition-colors"
+                  >
+                    @edimaxcreations__
+                  </Link>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <Linkedin className="w-5 h-5 text-accent-start mt-0.5 flex-shrink-0" />
+                <div>
+                  <Link
+                    href="https://www.linkedin.com/company/edimaxcreations/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-off-white transition-colors"
+                  >
+                    Edimax Creations
                   </Link>
                 </div>
               </div>
