@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect } from 'react'
-import { PDFViewer } from '@/components/pdf-viewer'
 
 const PDF_URL = "https://pub-35417c502fff4b9ba1530cadd45d3286.r2.dev/portfolio.pdf"
 
