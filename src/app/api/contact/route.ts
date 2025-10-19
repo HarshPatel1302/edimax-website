@@ -62,8 +62,8 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY)
     
     await resend.emails.send({
-      from: 'contact@edimaxcreations.com',
-      to: [process.env.CONTACT_TO || 'edimaxcreations@gmail.com'],
+      from: 'onboarding@resend.dev',
+      to: ['edimaxcreations@gmail.com'],
       subject: 'New Contact Form Submission - Edimax Creations',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">

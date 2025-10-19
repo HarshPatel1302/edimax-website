@@ -37,7 +37,7 @@ Set these in your Vercel dashboard under Project Settings > Environment Variable
 ### Required for Contact Form
 ```env
 # Option 1: Resend (Recommended)
-RESEND_API_KEY=your_resend_api_key_here
+RESEND_API_KEY=re_BdF39cWb_4PVJsq3AKvosmxSnDxbffhbf
 CONTACT_TO=edimaxcreations@gmail.com
 
 # Option 2: Webhook Integration
@@ -60,7 +60,7 @@ NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your_verification_code
 2. Create an API key
 3. Add to Vercel environment variables:
    ```env
-   RESEND_API_KEY=re_xxxxxxxxxx
+   RESEND_API_KEY=re_BdF39cWb_4PVJsq3AKvosmxSnDxbffhbf
    CONTACT_TO=edimaxcreations@gmail.com
    ```
 

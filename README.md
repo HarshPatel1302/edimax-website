@@ -46,7 +46,7 @@ A production-ready marketing website for Edimax Creations, a lifestyle-driven di
    Edit `.env.local` and configure your preferred email service:
    ```env
    # For Resend (recommended)
-   RESEND_API_KEY=your_resend_api_key_here
+   RESEND_API_KEY=re_BdF39cWb_4PVJsq3AKvosmxSnDxbffhbf
    CONTACT_TO=edimaxcreations@gmail.com
    
    # Or for webhook integration
@@ -132,7 +132,7 @@ src/
 Set these in your Vercel dashboard:
 
 ```env
-RESEND_API_KEY=your_production_resend_key
+RESEND_API_KEY=re_BdF39cWb_4PVJsq3AKvosmxSnDxbffhbf
 CONTACT_TO=edimaxcreations@gmail.com
 NEXT_PUBLIC_SITE_URL=https://edimaxcreations.com
 ```
@@ -219,7 +219,7 @@ The contact form supports multiple email services:
 
 ### Option 1: Resend (Recommended)
 ```env
-RESEND_API_KEY=your_resend_api_key
+RESEND_API_KEY=re_BdF39cWb_4PVJsq3AKvosmxSnDxbffhbf
 CONTACT_TO=edimaxcreations@gmail.com
 ```
 
