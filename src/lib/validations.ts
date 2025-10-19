@@ -15,7 +15,6 @@ export const contactFormSchema = z.object({
 export const serviceOptions = [
   { value: "brand-strategy-design", label: "Branding/Brand Strategy & Design" },
   { value: "social-media-management", label: "Social Media Management" },
-  { value: "content-creation", label: "Content Creation" },
   { value: "gmb-management", label: "GMB Management" },
   { value: "production", label: "Production" },
   { value: "online-reputation-management", label: "ORM" },

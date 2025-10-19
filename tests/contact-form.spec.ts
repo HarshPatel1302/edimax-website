@@ -12,7 +12,7 @@ test.describe('Contact Form', () => {
     
     // Select services
     await page.check('input[type="checkbox"][value="social-media-management"]');
-    await page.check('input[type="checkbox"][value="content-creation"]');
+    await page.check('input[type="checkbox"][value="brand-strategy-design"]');
     
     // Add a message
     await page.fill('textarea[name="message"]', 'I would like to discuss a potential project for my business.');

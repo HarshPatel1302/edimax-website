@@ -52,7 +52,7 @@ export default function ServicePage({ params }: ServicePageProps) {
     },
     {
       question: `Can I combine ${service.title} with other services?`,
-      answer: "Yes, we encourage a holistic approach. Many clients combine services like Social Media Management with Content Creation or Brand Strategy & Design for maximum impact and synergy."
+      answer: "Yes, we encourage a holistic approach. Many clients combine services like Social Media Management with Brand Strategy & Design or Production for maximum impact and synergy."
     },
     {
       question: `What makes Edimax Creations different for ${service.title}?`,
@@ -214,12 +214,9 @@ export default function ServicePage({ params }: ServicePageProps) {
               .map((relatedService) => (
                 <Card key={relatedService.slug} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-background to-muted/50 group">
                   <CardContent className="p-6">
-                    <h3 className="font-semibold text-xl text-foreground mb-3 group-hover:text-accent-start transition-colors duration-300">
+                    <h3 className="font-semibold text-xl text-foreground mb-6 group-hover:text-accent-start transition-colors duration-300">
                       {relatedService.title}
                     </h3>
-                    <p className="text-muted-foreground mb-4 leading-relaxed">
-                      {relatedService.challenges[0]}
-                    </p>
                     <Button asChild variant="link" className="text-accent-start hover:text-accent-end p-0 h-auto">
                       <Link href={`/services/${relatedService.slug}`}>
                         Learn More <ArrowRight className="ml-1 h-4 w-4" />
@@ -235,10 +232,10 @@ export default function ServicePage({ params }: ServicePageProps) {
       {/* Contact CTA */}
       <section className="py-16 md:py-24 bg-gradient-to-r from-charcoal to-charcoal/90">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
             Ready to Start Your Project?
           </h2>
-          <p className="text-xl text-primary-foreground/90 mb-8 leading-relaxed">
+          <p className="text-xl text-white/90 mb-8 leading-relaxed">
             Let's discuss how we can bring your vision to life with our {service.title} service.
           </p>
           <Button asChild size="lg" className="bg-[#b61d23] hover:bg-[#9a171c] text-white">

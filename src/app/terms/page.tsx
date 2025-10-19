@@ -43,7 +43,6 @@ export default function TermsPage() {
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                   <li>Social Media Management</li>
-                  <li>Content Creation and Strategy</li>
                   <li>Brand Strategy & Design</li>
                   <li>Google My Business Management</li>
                   <li>Production (Photo & Video)</li>

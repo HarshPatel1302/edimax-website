@@ -43,25 +43,18 @@ export default function ServicesPage() {
                 className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-background to-muted/50 group overflow-hidden"
               >
                 <CardHeader className="pb-4">
-                  <CardTitle className="text-xl font-semibold text-foreground group-hover:text-accent-start transition-colors duration-300">
+                  <CardTitle className="text-2xl font-semibold text-foreground group-hover:text-accent-start transition-colors duration-300">
                     {service.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  {/* Show up to 2 challenges */}
-                  <ul className="space-y-2 mb-6">
-                    {service.challenges.slice(0, 2).map((challenge, idx) => (
-                      <li key={idx} className="flex items-start text-sm text-muted-foreground">
-                        <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 mr-3 flex-shrink-0" />
-                        {challenge}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button asChild variant="link" className="text-accent-start hover:text-accent-end p-0 h-auto font-medium">
-                    <Link href={`/services/${service.slug}`}>
-                      Learn More <ArrowRight className="ml-1 h-4 w-4" />
-                    </Link>
-                  </Button>
+                  <div className="pt-4">
+                    <Button asChild variant="link" className="text-accent-start hover:text-accent-end p-0 h-auto font-medium">
+                      <Link href={`/services/${service.slug}`}>
+                        Learn More <ArrowRight className="ml-1 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}

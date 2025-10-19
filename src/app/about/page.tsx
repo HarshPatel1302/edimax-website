@@ -82,7 +82,7 @@ export default function AboutPage() {
         title="Meet the Creators"
         description="The passionate individuals behind Edimax Creations."
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-xl mx-auto">
           {[
             {
               id: 1,
@@ -97,7 +97,7 @@ export default function AboutPage() {
               image: "/team/team-member-2.JPG",
             }
           ].map((member) => (
-            <Card key={member.id} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative aspect-square">
+            <Card key={member.id} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden relative aspect-[3/4] w-full">
               <div className="absolute inset-0">
                 <Image
                   src={member.image}
@@ -109,12 +109,12 @@ export default function AboutPage() {
                 {/* Dark overlay for better text readability */}
                 <div className="absolute inset-0 bg-black/40 hover:bg-black/30 transition-all duration-300" />
               </div>
-              <CardContent className="relative z-10 h-full flex flex-col justify-end p-8">
+              <CardContent className="relative z-10 h-full flex flex-col justify-end p-6">
                 <div className="text-center text-white">
-                  <h3 className="font-semibold text-2xl mb-2 drop-shadow-lg">
+                  <h3 className="font-semibold text-xl mb-1 drop-shadow-lg">
                     {member.name}
                   </h3>
-                  <p className="text-lg font-medium drop-shadow-lg">
+                  <p className="text-base font-medium drop-shadow-lg">
                     {member.role}
                   </p>
                 </div>

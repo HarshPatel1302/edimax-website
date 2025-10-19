@@ -5,6 +5,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Button } from '@/components/ui/button'
 import { heroContent } from '@/lib/constants'
+import Link from 'next/link'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -93,14 +94,14 @@ export function Hero() {
   }, [])
 
   const handleScrollToServices = () => {
+    console.log('Button clicked - scrolling to services')
     const servicesSection = document.getElementById('services')
     if (servicesSection) {
+      console.log('Services section found, scrolling...')
       servicesSection.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      console.log('Services section not found')
     }
-  }
-
-  const handleScrollToContact = () => {
-    window.location.href = '/contact'
   }
 
   return (
@@ -151,13 +152,10 @@ export function Hero() {
                   <span className="relative z-10">{heroContent.primaryCTA}</span>
                 </Button>
                 
-                <Button
-                  onClick={handleScrollToContact}
-                  variant="outline"
-                  size="lg"
-                  className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-background px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold transition-all duration-300 w-full sm:w-auto"
-                >
-                  {heroContent.secondaryCTA}
+                <Button asChild variant="outline" size="lg" className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-background px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold transition-all duration-300 w-full sm:w-auto">
+                  <Link href="/services">
+                    {heroContent.secondaryCTA}
+                  </Link>
                 </Button>
               </div>
             </div>

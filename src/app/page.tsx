@@ -1,6 +1,5 @@
 import { Hero } from '@/components/hero'
 import { HowWeWork } from '@/components/how-we-work'
-import { MarqueeLogos } from '@/components/marquee-logos'
 import { SERVICES } from '@/content/services'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -44,17 +43,9 @@ export default function Home() {
                 className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-background to-muted/50 group overflow-hidden"
               >
                 <CardContent className="p-6">
-                  <h3 className="font-semibold text-xl text-foreground mb-3 group-hover:text-accent-start transition-colors duration-300">
+                  <h3 className="font-semibold text-2xl text-foreground mb-6 group-hover:text-accent-start transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <ul className="space-y-2 mb-6">
-                    {service.challenges.slice(0, 2).map((challenge, idx) => (
-                      <li key={idx} className="flex items-start text-sm text-muted-foreground">
-                        <span className="w-1.5 h-1.5 bg-white rounded-full mt-2 mr-3 flex-shrink-0" />
-                        {challenge}
-                      </li>
-                    ))}
-                  </ul>
                   <Button asChild variant="link" className="text-accent-start hover:text-accent-end p-0 h-auto font-medium">
                     <Link href={`/services/${service.slug}`}>
                       Learn More <ArrowRight className="ml-1 h-4 w-4" />
@@ -78,9 +69,6 @@ export default function Home() {
       {/* How We Work Timeline */}
       <HowWeWork />
 
-      {/* Marquee Logos */}
-      <MarqueeLogos />
-
       {/* Why Choose Us Section */}
       <section className="py-8 md:py-12 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -96,20 +84,20 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                title: "Experienced Team",
-                description: "Our team of creative professionals brings years of experience in digital marketing and brand building."
+                title: "100 + Reels Crafted",
+                description: "Creating engaging visual stories that boost visibility and connect with audiences."
               },
               {
-                title: "Proven Results", 
-                description: "We deliver measurable results that drive growth and help businesses achieve their marketing goals."
+                title: "500+ Leads Generated", 
+                description: "Driving measurable business growth through strategic campaigns."
               },
               {
-                title: "Creative Excellence",
-                description: "We combine strategic thinking with creative excellence to create campaigns that stand out."
+                title: "100% Trial- to- Annual Conversion",
+                description: "Turning short-term trust into long-term partnerships, every time."
               },
               {
-                title: "Lifestyle-Driven Approach",
-                description: "We understand that brands are about lifestyles, not just products, and we build accordingly."
+                title: "Brand- Themed Content",
+                description: "Building consistent, premium Identities that stand out in the market."
               }
             ].map((item, index) => (
               <Card key={index} className="text-center border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-background to-muted/50 group">

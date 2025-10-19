@@ -104,20 +104,6 @@ export function HowWeWork() {
           })}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-6 sm:mt-8">
-          <p className="text-base sm:text-lg text-muted-foreground mb-4 sm:mb-6">
-            Ready to start your brand transformation?
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <button className="bg-[#b61d23] hover:bg-[#9a171c] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto">
-              Get Started Today
-            </button>
-            <button className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-background px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-300 w-full sm:w-auto">
-              Learn More
-            </button>
-          </div>
-        </div>
       </div>
     </section>
   )

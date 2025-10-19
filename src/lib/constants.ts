@@ -2,10 +2,10 @@
 
 export const heroContent = {
   headline: "LET'S TURN YOUR BUSINESS INTO A BRAND !",
-  subline: "Edimax Creations is a digital marketing agency that blends creativity, strategy, and storytelling to build lifestyle-driven brands.",
-  quickSummary: "We help businesses grow with social media management, performance campaigns, content creation, brand design, and Google My Business optimization. Our goal is simple—turning your ideas into impactful digital experiences.",
-  primaryCTA: "Discover Our Services",
-  secondaryCTA: "Let's Work Together"
+  subline: "",
+  quickSummary: "Edimax Creations is a lifestyle-driven digital marketing agency that help businesses grow with social media management, performance campaigns, content creation, brand design, and Google My Business optimization. Our goal is simple: turning your ideas into impactful digital experiences.",
+  primaryCTA: "Get Started Today",
+  secondaryCTA: "Learn More"
 }
 
 export const aboutContent = {
@@ -51,28 +51,6 @@ export const services = [
       "25% average increase in engagement rate",
       "40% growth in follower count",
       "60% improvement in reach and impressions"
-    ]
-  },
-  {
-    slug: "content-creation",
-    title: "Content Creation",
-    icon: "PenTool",
-    shortDescription: "Compelling visual and written content",
-    description: "From concept to creation, we produce high-quality content that tells your brand story and engages your audience.",
-    problem: "Creating consistent, high-quality content that resonates with your audience while maintaining brand consistency is a constant challenge.",
-    approach: "We develop a content strategy that aligns with your brand voice and business goals, creating compelling visuals, copy, and multimedia content that drives engagement and conversions.",
-    deliverables: [
-      "Content strategy and planning",
-      "Visual design and graphics",
-      "Copywriting and storytelling",
-      "Video content production",
-      "Photography and editing",
-      "Brand guidelines and templates"
-    ],
-    kpis: [
-      "50% increase in content engagement",
-      "35% improvement in click-through rates",
-      "80% of content performs above industry benchmarks"
     ]
   },
   {

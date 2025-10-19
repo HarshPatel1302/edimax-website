@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { contactFormSchema } from '@/lib/validations'
+import { Resend } from 'resend'
 
 // Rate limiting map (in production, use Redis or a database)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>()
@@ -57,26 +58,42 @@ export async function POST(request: NextRequest) {
       userAgent: request.headers.get('user-agent')
     })
 
-    // TODO: Replace with your preferred email service
-    // Example implementations:
-
-    // Option 1: Using Resend
-    // const { Resend } = require('resend')
-    // const resend = new Resend(process.env.RESEND_API_KEY)
-    // 
-    // await resend.emails.send({
-    //   from: 'contact@edimaxcreations.com',
-    //   to: [process.env.CONTACT_TO || 'edimaxcreations@gmail.com'],
-    //   subject: 'New Contact Form Submission',
-    //   html: `
-    //     <h2>New Contact Form Submission</h2>
-    //     <p><strong>Name:</strong> ${validatedData.firstName} ${validatedData.lastName}</p>
-    //     <p><strong>Email:</strong> ${validatedData.email}</p>
-    //     <p><strong>Phone:</strong> ${validatedData.mobileNumber}</p>
-    //     <p><strong>Services:</strong> ${validatedData.services.join(', ')}</p>
-    //     <p><strong>Message:</strong> ${validatedData.message || 'No message provided'}</p>
-    //   `
-    // })
+    // Send email notification using Resend
+    const resend = new Resend(process.env.RESEND_API_KEY)
+    
+    await resend.emails.send({
+      from: 'contact@edimaxcreations.com',
+      to: [process.env.CONTACT_TO || 'edimaxcreations@gmail.com'],
+      subject: 'New Contact Form Submission - Edimax Creations',
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+          <h2 style="color: #b61d23; border-bottom: 2px solid #b61d23; padding-bottom: 10px;">
+            New Contact Form Submission
+          </h2>
+          
+          <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #333; margin-top: 0;">Contact Details:</h3>
+            <p><strong>Name:</strong> ${validatedData.firstName} ${validatedData.lastName}</p>
+            <p><strong>Email:</strong> <a href="mailto:${validatedData.email}" style="color: #b61d23;">${validatedData.email}</a></p>
+            <p><strong>Phone:</strong> <a href="tel:${validatedData.mobileNumber}" style="color: #b61d23;">${validatedData.mobileNumber}</a></p>
+            <p><strong>Services Interested In:</strong> ${validatedData.services.join(', ')}</p>
+            ${validatedData.message ? `<p><strong>Message:</strong></p><div style="background-color: white; padding: 15px; border-radius: 5px; border-left: 4px solid #b61d23;">${validatedData.message}</div>` : '<p><strong>Message:</strong> No message provided</p>'}
+          </div>
+          
+          <div style="background-color: #e9ecef; padding: 15px; border-radius: 8px; margin-top: 20px;">
+            <p style="margin: 0; font-size: 14px; color: #6c757d;">
+              <strong>Submission Details:</strong><br>
+              Time: ${new Date().toLocaleString()}<br>
+              IP: ${ip}
+            </p>
+          </div>
+          
+          <p style="margin-top: 30px; text-align: center; color: #6c757d; font-size: 14px;">
+            This email was sent from the Edimax Creations contact form.
+          </p>
+        </div>
+      `
+    })
 
     // Option 2: Using webhook (n8n, Formspree, etc.)
     // const webhookUrl = process.env.CONTACT_WEBHOOK_URL
