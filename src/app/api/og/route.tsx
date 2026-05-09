@@ -7,7 +7,7 @@ export async function GET() {
     (
       <div
         style={{
-          background: 'linear-gradient(135deg, #0B0D12 0%, #4F46E5 50%, #7C3AED 100%)',
+          background: 'linear-gradient(135deg, #0B0D12 0%, #7a0e14 60%, #b61d23 100%)',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -15,51 +15,65 @@ export async function GET() {
           justifyContent: 'center',
           flexDirection: 'column',
           fontFamily: 'Inter, system-ui, sans-serif',
+          padding: '80px',
         }}
       >
         <div
           style={{
-            background: 'rgba(247, 247, 248, 0.95)',
-            borderRadius: '24px',
-            padding: '60px',
-            textAlign: 'center',
-            maxWidth: '800px',
-            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '20px',
+            marginBottom: '40px',
           }}
         >
-          <h1
+          <div
             style={{
-              fontSize: '48px',
+              width: '60px',
+              height: '4px',
+              background: '#b61d23',
+            }}
+          />
+          <span
+            style={{
+              fontSize: '18px',
+              color: '#b61d23',
               fontWeight: '700',
-              color: '#0B0D12',
-              margin: '0 0 20px 0',
-              fontFamily: 'Playfair Display, serif',
-              lineHeight: '1.2',
+              letterSpacing: '6px',
+              textTransform: 'uppercase',
             }}
           >
             Edimax Creations
-          </h1>
-          <p
-            style={{
-              fontSize: '24px',
-              color: '#4F46E5',
-              margin: '0 0 30px 0',
-              fontWeight: '600',
-            }}
-          >
-            Lifestyle-Driven Digital Marketing Agency
-          </p>
-          <p
-            style={{
-              fontSize: '18px',
-              color: '#6B7280',
-              margin: '0',
-              lineHeight: '1.6',
-            }}
-          >
-            Let's turn your business into a brand!
-          </p>
+          </span>
         </div>
+
+        <h1
+          style={{
+            fontSize: '96px',
+            fontWeight: '900',
+            color: '#F7F8FA',
+            margin: '0',
+            fontFamily: 'Playfair Display, serif',
+            lineHeight: '1.0',
+            letterSpacing: '-0.03em',
+            textAlign: 'center',
+            maxWidth: '1000px',
+          }}
+        >
+          Let's turn your business into a brand.
+        </h1>
+
+        <p
+          style={{
+            fontSize: '24px',
+            color: 'rgba(247, 248, 250, 0.6)',
+            margin: '40px 0 0 0',
+            lineHeight: '1.5',
+            textAlign: 'center',
+            maxWidth: '720px',
+          }}
+        >
+          Lifestyle-driven digital marketing — strategy, content, production, reputation.
+        </p>
       </div>
     ),
     {

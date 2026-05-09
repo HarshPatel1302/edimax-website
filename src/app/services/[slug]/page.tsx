@@ -7,9 +7,7 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle, AlertTriangle } from 'lucide-react'
 
 interface ServicePageProps {
-  params: {
-    slug: string
-  }
+  params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
@@ -19,7 +17,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ServicePageProps) {
-  const service = SERVICES.find((s) => s.slug === params.slug)
+  const { slug } = await params
+  const service = SERVICES.find((s) => s.slug === slug)
 
   if (!service) {
     return {
@@ -34,8 +33,9 @@ export async function generateMetadata({ params }: ServicePageProps) {
   }
 }
 
-export default function ServicePage({ params }: ServicePageProps) {
-  const service = SERVICES.find((s) => s.slug === params.slug)
+export default async function ServicePage({ params }: ServicePageProps) {
+  const { slug } = await params
+  const service = SERVICES.find((s) => s.slug === slug)
 
   if (!service) {
     notFound()

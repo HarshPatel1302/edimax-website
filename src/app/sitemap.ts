@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { services } from '@/lib/constants'
+import { SERVICES } from '@/content/services'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://edimaxcreations.com'
@@ -45,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   // Service pages
-  const servicePages = services.map((service) => ({
+  const servicePages = SERVICES.map((service) => ({
     url: `${baseUrl}/services/${service.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,

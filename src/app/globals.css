@@ -6,7 +6,7 @@
   --off-white: #F7F8FA;
   --accent-start: #b61d23;
   --accent-end: #b61d23;
-  
+
   /* Semantic colors - Dark Theme */
   --background: var(--charcoal);
   --foreground: var(--off-white);
@@ -45,7 +45,7 @@
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-ring: var(--ring);
-  
+
   --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
   --font-display: var(--font-playfair), serif;
 }
@@ -54,164 +54,102 @@
   border-color: var(--border);
 }
 
+html {
+  /* Lenis controls smooth scroll on JS; keep CSS smooth as fallback for prefers-reduced-motion users who land mid-anchor */
+  overflow-x: hidden;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
   font-feature-settings: "rlig" 1, "calt" 1;
   line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  -webkit-text-size-adjust: 100%;
 }
 
 .font-display {
   font-family: var(--font-display);
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-  /* Prevent horizontal scroll on mobile */
-  overflow-x: hidden;
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
-/* Body optimizations */
-body {
-  /* Prevent horizontal scroll */
-  overflow-x: hidden;
-  /* Better touch scrolling on mobile */
-  -webkit-overflow-scrolling: touch;
-  /* Prevent zoom on input focus (iOS) */
-  -webkit-text-size-adjust: 100%;
+/* Custom cursor — hide native when active */
+.cursor-none,
+.cursor-none * {
+  cursor: none !important;
 }
 
-/* Container improvements */
+/* Selection */
+::selection {
+  background: #b61d23;
+  color: #fff;
+}
+
+/* Container guard */
 .container {
-  /* Ensure containers don't exceed viewport */
   max-width: 100vw;
   overflow-x: hidden;
 }
 
-/* Reduced motion support */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  
-  *,
-  *::before,
-  *::after {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
 
-/* Mobile-specific optimizations */
+/* Mobile */
 @media (max-width: 768px) {
-  /* Prevent horizontal scroll on small screens */
-  * {
-    max-width: 100%;
-  }
-  
   /* Better touch targets */
-  button, a, input, select, textarea {
+  button, a[role="button"], input, select, textarea {
     min-height: 44px;
-    min-width: 44px;
   }
-  
-  /* Improve text readability */
-  body {
-    font-size: 16px;
-    line-height: 1.6;
-  }
-  
-  /* Better spacing for mobile */
-  .space-y-4 > * + * {
-    margin-top: 1rem;
-  }
-  
-  .space-y-6 > * + * {
-    margin-top: 1.5rem;
-  }
-  
-  .space-y-8 > * + * {
-    margin-top: 2rem;
-  }
-}
-
-/* Tablet optimizations */
-@media (min-width: 769px) and (max-width: 1024px) {
-  /* Better spacing for tablets */
-  .space-y-6 > * + * {
-    margin-top: 1.5rem;
-  }
-}
-
-/* Large screen optimizations */
-@media (min-width: 1440px) {
-  /* Better spacing for large screens */
-  .space-y-8 > * + * {
-    margin-top: 2.5rem;
-  }
+  body { font-size: 16px; line-height: 1.6; }
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--muted);
-}
-
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--charcoal); }
 ::-webkit-scrollbar-thumb {
-  background: var(--muted-foreground);
+  background: linear-gradient(to bottom, #b61d23, #7a0e14);
   border-radius: 4px;
 }
+::-webkit-scrollbar-thumb:hover { background: #b61d23; }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--foreground);
+/* Hero scroll-line keyframe */
+@keyframes scrollLine {
+  0%   { transform: translateY(-100%); }
+  60%  { transform: translateY(100%); }
+  100% { transform: translateY(100%); }
 }
 
-/* Marquee animation keyframes */
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-1 * var(--marquee-width)));
-  }
+/* Mask reveal helpers */
+.mask-reveal-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.12em;
 }
-
-/* Alternative marquee animation for better seamless effect */
-@keyframes marquee-seamless {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-1 * var(--marquee-width)));
-  }
-}
-
-/* Mobile-specific marquee improvements */
-@media (max-width: 768px) {
-  .marquee-container {
-    /* Improve performance on mobile */
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000px;
-  }
-  
-  .marquee-container > div {
-    /* Ensure smooth animation on mobile */
-    transform: translateZ(0);
-    will-change: transform;
-  }
-}
-
-/* Reduce motion for users who prefer it */
-@media (prefers-reduced-motion: reduce) {
-  .marquee-container {
-    animation: none !important;
-  }
+.mask-reveal-inner {
+  display: inline-block;
+  will-change: transform;
 }

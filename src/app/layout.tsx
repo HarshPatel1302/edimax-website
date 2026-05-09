@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import "lenis/dist/lenis.css";
 import { metadata as siteMetadata } from "./metadata";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
+import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
+import { MagneticCursor } from "@/components/magnetic-cursor";
+import { ScrollProgress } from "@/components/scroll-progress";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,6 +21,7 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
+  weight: ["400", "500", "700", "800", "900"],
 });
 
 export const metadata: Metadata = siteMetadata;
@@ -27,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth dark">
+    <html lang="en" className="dark">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
         <meta name="format-detection" content="telephone=no" />
@@ -38,12 +43,16 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} min-h-screen bg-background font-sans antialiased overflow-x-hidden`}
       >
-        <Navbar />
-        <main className="pt-16 min-h-screen">
-          {children}
-        </main>
-        <Footer />
-        <Toaster />
+        <SmoothScrollProvider>
+          <ScrollProgress />
+          <MagneticCursor />
+          <Navbar />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+          <Toaster />
+        </SmoothScrollProvider>
       </body>
     </html>
   );

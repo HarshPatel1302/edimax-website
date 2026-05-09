@@ -1,83 +1,28 @@
-import { SERVICES } from '@/content/services'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { PageHero } from '@/components/page-hero'
+import { ServicesList } from '@/components/services-list'
+import { CtaMassive } from '@/components/cta-massive'
+import { HowWeWork } from '@/components/how-we-work'
 
 export const metadata = {
   title: 'Our Services',
-  description: 'Comprehensive digital marketing services including social media management, content creation, brand strategy, GMB management, production, and online reputation management.',
+  description:
+    'Comprehensive digital marketing services including social media management, content creation, brand strategy, GMB management, production, and online reputation management.',
 }
 
 export default function ServicesPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-background via-background to-muted">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-            Our Services
-          </h1>
-          <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-            We offer comprehensive digital marketing solutions to help your business grow and thrive in the digital landscape.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="What We Do"
+        title="Services that earn attention and keep it."
+        description="Every service is built to compound. No fluff, no vanity metrics, just the work that moves the brand forward."
+      />
 
-      {/* Services Grid */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              What We Do Best
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              From strategy to execution, our services are tailored to help you succeed in the digital landscape.
-            </p>
-          </div>
+      <ServicesList />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SERVICES.map((service) => (
-              <Card 
-                key={service.slug}
-                className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-background to-muted/50 group overflow-hidden"
-              >
-                <CardHeader className="pb-4">
-                  <CardTitle className="text-2xl font-semibold text-foreground group-hover:text-accent-start transition-colors duration-300">
-                    {service.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="pt-4">
-                    <Button asChild variant="link" className="text-accent-start hover:text-accent-end p-0 h-auto font-medium">
-                      <Link href={`/services/${service.slug}`}>
-                        Learn More <ArrowRight className="ml-1 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HowWeWork />
 
-      {/* CTA Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-background via-background to-muted">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Ready to Elevate Your Brand?
-          </h2>
-          <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-            Contact us today to discuss your digital marketing needs and get a custom strategy tailored for your success.
-          </p>
-          <Button asChild size="lg" className="bg-[#b61d23] hover:bg-[#9a171c] text-white shadow-lg">
-            <Link href="/contact">
-              Get a Free Consultation <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
-        </div>
-      </section>
+      <CtaMassive />
     </>
   )
 }

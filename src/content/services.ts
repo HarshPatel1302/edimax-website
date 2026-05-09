@@ -60,4 +60,15 @@ export const SERVICES: Service[] = [
     solution:
       "We track and manage your digital footprint with precision — responding to reviews, managing crises, and building a strong positive sentiment online. Our focus is to transform customer opinions into trust-building opportunities.",
   },
+  {
+    slug: "personal-branding",
+    title: "Personal Branding",
+    challenges: [
+      "Difficulty articulating a clear, recognizable personal identity",
+      "Struggling to stand out in a crowded niche",
+      "Translating real expertise into engaging, on-brand content",
+    ],
+    solution:
+      "We help founders, creators, and experts build a magnetic personal brand — defining a clear voice, signature visuals, and a content rhythm that turns expertise into authority and authority into opportunity.",
+  },
 ];

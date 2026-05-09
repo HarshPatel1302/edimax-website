@@ -2,17 +2,12 @@
 
 import { useEffect } from 'react'
 
-const PDF_URL = "https://pub-35417c502fff4b9ba1530cadd45d3286.r2.dev/portfolio.pdf"
+const PDF_URL = "/portfolio.pdf"
 
 export default function PortfolioPage() {
   useEffect(() => {
-    // Automatically open PDF when page loads
-    const handleOpenPDF = () => {
-      // Open PDF in new tab
-      window.open(PDF_URL, '_blank', 'noopener,noreferrer')
-    }
-
-    handleOpenPDF()
+    // Automatically open PDF in a new tab when the page loads
+    window.open(PDF_URL, '_blank', 'noopener,noreferrer')
   }, [])
 
   return (
@@ -26,19 +21,19 @@ export default function PortfolioPage() {
           </div>
           <h1 className="text-2xl font-bold text-foreground mb-2">Portfolio PDF</h1>
           <p className="text-muted-foreground mb-6">
-            Your portfolio PDF should open automatically in a new tab. If it doesn't open, click the button below.
+            Your portfolio PDF should open automatically in a new tab. If it doesn&apos;t open, click the button below.
           </p>
         </div>
-        
+
         <button
           onClick={() => window.open(PDF_URL, '_blank', 'noopener,noreferrer')}
           className="bg-gradient-to-r from-accent-start to-accent-end text-white px-6 py-3 rounded-lg font-medium hover:from-accent-start/90 hover:to-accent-end/90 transition-all duration-300 transform hover:scale-105"
         >
           Open Portfolio PDF
         </button>
-        
+
         <p className="text-xs text-muted-foreground mt-4">
-          If you're having trouble viewing the PDF, you can also download it directly.
+          If you&apos;re having trouble viewing the PDF, you can also download it directly.
         </p>
       </div>
     </div>
