@@ -5,7 +5,8 @@ test.describe('Homepage', () => {
     await page.goto('/')
     await expect(page).toHaveTitle(/Edimax Creations/)
     // Hero headline is split into word spans; toContainText still matches the joined text
-    await expect(page.locator('h1').first()).toContainText("LET'S TURN YOUR BUSINESS INTO A BRAND")
+    await expect(page.locator('h1').first()).toContainText('Why wait for them to look up')
+    await expect(page.getByRole('main')).toContainText('Put your brand where their eyes already are')
     await expect(page.locator('nav')).toBeVisible()
     await expect(page.locator('footer')).toBeVisible()
   })
@@ -31,12 +32,12 @@ test.describe('Homepage', () => {
     await expect(page.locator('h1').first()).toContainText("Let's build something worth scrolling for")
   })
 
-  test('service cards link to detail page', async ({ page }) => {
-    await page.goto('/')
-    const card = page.locator('a[href="/services/social-media-management"]').first()
-    await expect(card).toBeVisible()
-    await card.click()
-    await expect(page).toHaveURL('/services/social-media-management')
-    await expect(page.locator('h1').first()).toContainText('Social Media Management')
+  test('services page rows expand with overview', async ({ page }) => {
+    await page.goto('/services')
+    const row = page.locator('[data-service]').first()
+    await expect(row).toBeVisible()
+    await expect(row).toContainText('Social Media Management')
+    await row.getByRole('button', { name: /Expand Social Media Management/i }).click()
+    await expect(row).toContainText('Build an active, engaging, and premium online presence')
   })
 })

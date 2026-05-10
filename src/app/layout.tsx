@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import "lenis/dist/lenis.css";
 import { metadata as siteMetadata } from "./metadata";
@@ -9,20 +8,6 @@ import { Toaster } from "@/components/ui/sonner";
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import { MagneticCursor } from "@/components/magnetic-cursor";
 import { ScrollProgress } from "@/components/scroll-progress";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-  weight: ["400", "500", "700", "900"],
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-  weight: ["400", "500", "700", "800", "900"],
-});
 
 export const metadata: Metadata = siteMetadata;
 
@@ -41,7 +26,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body
-        className={`${inter.variable} ${playfair.variable} min-h-screen bg-background font-sans antialiased overflow-x-hidden`}
+        className="min-h-screen bg-background font-sans antialiased overflow-x-hidden"
       >
         <SmoothScrollProvider>
           <ScrollProgress />

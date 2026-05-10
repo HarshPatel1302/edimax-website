@@ -14,7 +14,7 @@ export async function GET() {
           alignItems: 'center',
           justifyContent: 'center',
           flexDirection: 'column',
-          fontFamily: 'Inter, system-ui, sans-serif',
+          fontFamily: 'GC Lancelot, ui-sans-serif, system-ui, sans-serif',
           padding: '80px',
         }}
       >
@@ -49,10 +49,10 @@ export async function GET() {
         <h1
           style={{
             fontSize: '96px',
-            fontWeight: '900',
+            fontWeight: '700',
             color: '#F7F8FA',
             margin: '0',
-            fontFamily: 'Playfair Display, serif',
+            fontFamily: 'GC Lancelot, ui-sans-serif, system-ui, sans-serif',
             lineHeight: '1.0',
             letterSpacing: '-0.03em',
             textAlign: 'center',
@@ -65,6 +65,7 @@ export async function GET() {
         <p
           style={{
             fontSize: '24px',
+            fontWeight: '300',
             color: 'rgba(247, 248, 250, 0.6)',
             margin: '40px 0 0 0',
             lineHeight: '1.5',

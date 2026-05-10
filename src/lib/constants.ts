@@ -1,10 +1,9 @@
 import { SERVICES } from "@/content/services"
 
 export const heroContent = {
-  headline: "LET'S TURN YOUR BUSINESS INTO A BRAND !",
-  subline: "",
-  quickSummary:
-    "Edimax Creations is a lifestyle-driven digital marketing agency that help businesses grow with social media management, performance campaigns, content creation, brand design, and Google My Business optimization. Our goal is simple: turning your ideas into impactful digital experiences.",
+  headlineLine1: "Why wait for",
+  headlineLine2: "them to look up ?",
+  subline: "Put your brand where their eyes already are.",
   primaryCTA: "Get Started Today",
   secondaryCTA: "Learn More",
 }
@@ -53,7 +52,7 @@ export const contactInfo = {
 export const footerLinks = {
   services: SERVICES.map((service) => ({
     name: service.title,
-    href: `/services/${service.slug}`,
+    href: '/services',
   })),
   company: [
     { name: "About Us", href: "/about" },

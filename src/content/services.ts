@@ -1,6 +1,8 @@
 export type Service = {
   slug: string;
   title: string;
+  /** Short overview shown in list / home accordions */
+  overview: string;
   challenges: string[];
   solution: string;
 };
@@ -9,6 +11,8 @@ export const SERVICES: Service[] = [
   {
     slug: "social-media-management",
     title: "Social Media Management",
+    overview:
+      "Build an active, engaging, and premium online presence with tailored strategies, creative content, and community building.",
     challenges: [
       "Inconsistent posting and engagement",
       "Difficulty understanding platform algorithms",
@@ -20,6 +24,8 @@ export const SERVICES: Service[] = [
   {
     slug: "brand-strategy-design",
     title: "Brand Strategy & Design",
+    overview:
+      "From logos to campaigns, we design a digital identity that reflects your brand.",
     challenges: [
       "Undefined brand identity and poor positioning",
       "Inconsistent visual aesthetics across platforms",
@@ -31,6 +37,8 @@ export const SERVICES: Service[] = [
   {
     slug: "gmb-management",
     title: "Google My Business (GMB) Management",
+    overview:
+      "Make your business visible where it matters most on Google. We optimize and manage your GMB profile with regular updates, posts, reviews, and local visibility strategies that bring customers to your doorstep.",
     challenges: [
       "Poor visibility in local search results",
       "Incomplete or outdated profiles",
@@ -42,6 +50,8 @@ export const SERVICES: Service[] = [
   {
     slug: "production",
     title: "Production",
+    overview:
+      "High-quality photoshoots and video production that give your brand the premium edge it deserves. From product shoots to promotional videos, we create content that speaks louder than words.",
     challenges: [
       "Poor visual quality and lack of storytelling in shoots",
       "No alignment between content and marketing goals",
@@ -52,6 +62,8 @@ export const SERVICES: Service[] = [
   {
     slug: "online-reputation-management",
     title: "Online Reputation Management (ORM)",
+    overview:
+      "Your brand's reputation is its strongest currency. We monitor, manage, and enhance your online presence by handling reviews, customer feedback, and public perception keeping your brand positive and trustworthy.",
     challenges: [
       "Negative feedback damaging brand credibility",
       "Unmonitored brand mentions and misinformation",
@@ -63,6 +75,8 @@ export const SERVICES: Service[] = [
   {
     slug: "personal-branding",
     title: "Personal Branding",
+    overview:
+      "Personal branding is about becoming more than just a face on the internet. We help entrepreneurs, professionals and creators build a strong digital presence through strategic content, visual storytelling and positioning that establishes credibility, authority, and long-term audience trust.",
     challenges: [
       "Difficulty articulating a clear, recognizable personal identity",
       "Struggling to stand out in a crowded niche",

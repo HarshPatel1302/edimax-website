@@ -14,10 +14,30 @@ interface Stat {
 }
 
 const STATS: Stat[] = [
-  { value: 100, suffix: '+', label: 'Reels Crafted', sub: 'High-impact visual stories that pull audiences in.' },
-  { value: 500, suffix: '+', label: 'Leads Generated', sub: 'Measurable pipeline driven through targeted campaigns.' },
-  { value: 100, suffix: '%', label: 'Trial → Annual', sub: 'Every short-term trial converts to a long-term partner.' },
-  { value: 24, suffix: '/7', label: 'Brand Watch', sub: 'Reputation, response, refinement — round the clock.' },
+  {
+    value: 100,
+    suffix: '+',
+    label: 'Reels crafted',
+    sub: 'Creating engaging visual stories that boost visibility and connect with audiences.',
+  },
+  {
+    value: 100,
+    suffix: '%',
+    label: 'Trial to Annual Conversion',
+    sub: 'Turning short term trust into long term partnerships, every time.',
+  },
+  {
+    value: 100,
+    suffix: '%',
+    label: 'Unique Strategies',
+    sub: 'Built on strategies that set brands apart.',
+  },
+  {
+    value: 1000,
+    suffix: '+',
+    label: 'Leads Generated',
+    sub: 'Bringing in consistent, high-quality leads that actually turn into paying clients.',
+  },
 ]
 
 function StatItem({ stat, index }: { stat: Stat; index: number }) {
@@ -94,7 +114,7 @@ function StatItem({ stat, index }: { stat: Stat; index: number }) {
         </span>
       </div>
 
-      <h3 className="text-base md:text-lg font-semibold uppercase tracking-[0.15em] text-foreground/90 mb-2">
+      <h3 className="text-base md:text-lg font-semibold text-foreground/90 mb-2 leading-snug">
         {stat.label}
       </h3>
       <p className="text-sm text-foreground/55 leading-relaxed max-w-[28ch]">
@@ -155,8 +175,7 @@ export function StatsSection() {
             data-reveal
             className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-[1.05]"
           >
-            Results, not<br />
-            <span className="text-foreground/40">opinions.</span>
+            Why EDIMAX ?
           </h2>
         </div>
 

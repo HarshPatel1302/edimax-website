@@ -32,8 +32,19 @@ const config: Config = {
         ring: "var(--ring)",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-playfair)", "serif"],
+        sans: ["var(--font-gc-lancelot)", "system-ui", "sans-serif"],
+        display: ["var(--font-gc-lancelot)", "system-ui", "sans-serif"],
+      },
+      fontWeight: {
+        thin: "100",
+        extralight: "100",
+        light: "300",
+        normal: "300",
+        medium: "500",
+        semibold: "500",
+        bold: "700",
+        extrabold: "700",
+        black: "700",
       },
       animation: {
         "blob": "blob 7s infinite",

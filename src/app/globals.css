@@ -1,5 +1,39 @@
 @import "tailwindcss";
 
+/* GC Lancelot — add these .woff2 files to public/fonts/gc-lancelot/
+   Typical export names; rename files or update src= to match your package. */
+@font-face {
+  font-family: "GC Lancelot";
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url("/fonts/gc-lancelot/GCLancelot-Thin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "GC Lancelot";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/gc-lancelot/GCLancelot-Light.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "GC Lancelot";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/gc-lancelot/GCLancelot-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "GC Lancelot";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/gc-lancelot/GCLancelot-Bold.woff2") format("woff2");
+}
+
 :root {
   /* Edimax Design System - Dark Theme */
   --charcoal: #0B0D12;
@@ -23,6 +57,8 @@
   --destructive: #EF4444;
   --destructive-foreground: var(--off-white);
   --ring: var(--accent-start);
+
+  --font-gc-lancelot: "GC Lancelot", ui-sans-serif, system-ui, sans-serif;
 }
 
 @theme inline {
@@ -46,8 +82,8 @@
   --color-destructive-foreground: var(--destructive-foreground);
   --color-ring: var(--ring);
 
-  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
-  --font-display: var(--font-playfair), serif;
+  --font-sans: var(--font-gc-lancelot);
+  --font-display: var(--font-gc-lancelot);
 }
 
 * {
@@ -63,6 +99,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  /* Light — default information / paragraph tone (specimen: GC Lancelot Light) */
+  font-weight: 300;
   font-feature-settings: "rlig" 1, "calt" 1;
   line-height: 1.6;
   overflow-x: hidden;
@@ -70,8 +108,31 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
+/* Display / headings share the family; weight comes from tags (.font-bold, h1–h6 rules) */
 .font-display {
   font-family: var(--font-display);
+}
+
+/* Heading tags: Bold (specimen: GC Lancelot Bold) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+/* Inline emphasis in copy: Medium, not Bold */
+strong,
+b {
+  font-weight: 500;
+}
+
+/* Fine / helper copy can use Thin when you add `font-thin` in markup */
+small {
+  font-weight: 300;
 }
 
 /* Lenis */

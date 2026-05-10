@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Button } from '@/components/ui/button'
@@ -14,12 +15,8 @@ gsap.registerPlugin(ScrollTrigger)
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null)
   const headlineRef = useRef<HTMLHeadingElement>(null)
-  const summaryRef = useRef<HTMLParagraphElement>(null)
+  const sublineRef = useRef<HTMLParagraphElement>(null)
   const ctaRef = useRef<HTMLDivElement>(null)
-  const eyebrowRef = useRef<HTMLDivElement>(null)
-  const blob1Ref = useRef<HTMLDivElement>(null)
-  const blob2Ref = useRef<HTMLDivElement>(null)
-  const blob3Ref = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   const scrollIndicatorRef = useRef<HTMLDivElement>(null)
   const primaryButtonRef = useMagnetic<HTMLButtonElement>(0.4)
@@ -33,85 +30,73 @@ export function Hero() {
     const ctx = gsap.context(() => {
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-      // Split headline into words with mask wrappers
+      // Split each headline line into words with mask wrappers
       if (headline) {
-        const text = headline.textContent ?? ''
-        headline.innerHTML = text
-          .split(/\s+/)
-          .filter(Boolean)
-          .map(
-            (w) =>
-              `<span class="inline-block overflow-hidden align-bottom pb-[0.12em]"><span class="inline-block hero-word">${w}</span></span>`
-          )
-          .join(' ')
+        headline.querySelectorAll('.hero-headline-line').forEach((line) => {
+          const text = line.textContent ?? ''
+          line.innerHTML = text
+            .split(/\s+/)
+            .filter(Boolean)
+            .map(
+              (w) =>
+                `<span class="inline-block overflow-hidden align-bottom pb-[0.12em]"><span class="inline-block hero-word">${w}</span></span>`
+            )
+            .join(' ')
+        })
       }
 
       const words = headlineRef.current?.querySelectorAll('.hero-word') ?? []
 
       if (reduced) {
-        gsap.set([eyebrowRef.current, words, summaryRef.current, ctaRef.current], {
-          opacity: 1,
-          y: 0,
-          yPercent: 0,
-        })
+        gsap.set(
+          [words, sublineRef.current, ctaRef.current].filter(Boolean),
+          {
+            opacity: 1,
+            y: 0,
+            yPercent: 0,
+          }
+        )
         return
       }
 
       // Initial state
       gsap.set(words, { yPercent: 110 })
-      gsap.set([eyebrowRef.current, summaryRef.current, ctaRef.current], {
+      gsap.set([ctaRef.current], {
         opacity: 0,
         y: 30,
       })
+      if (sublineRef.current) {
+        gsap.set(sublineRef.current, { opacity: 0, y: 30 })
+      }
 
-      const tl = gsap.timeline({ delay: 0.2 })
-      tl.to(eyebrowRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-      })
-        .to(
+      const tl = gsap.timeline({ delay: 0.15 })
+      tl.to(
           words,
           {
             yPercent: 0,
-            duration: 1.1,
-            stagger: 0.06,
+            duration: 1.15,
+            stagger: 0.07,
             ease: 'expo.out',
           },
-          '-=0.4'
+          0
         )
-        .to(
-          summaryRef.current,
-          { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-          '-=0.6'
+      if (sublineRef.current) {
+        tl.to(
+          sublineRef.current,
+          { opacity: 1, y: 0, duration: 0.85, ease: 'power3.out' },
+          '-=0.5'
         )
-        .to(
+      }
+      tl.to(
           ctaRef.current,
           { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-          '-=0.5'
+          '-=0.45'
         )
         .from(
           scrollIndicatorRef.current,
           { opacity: 0, y: -10, duration: 0.6, ease: 'power2.out' },
           '-=0.3'
         )
-
-      // Blob parallax & idle drift
-      const blobs = [blob1Ref.current, blob2Ref.current, blob3Ref.current].filter(
-        Boolean
-      ) as HTMLElement[]
-
-      blobs.forEach((b, i) => {
-        gsap.to(b, {
-          x: `+=${i % 2 === 0 ? 30 : -40}`,
-          y: `+=${i % 2 === 0 ? -20 : 30}`,
-          duration: 6 + i * 1.5,
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut',
-        })
-      })
 
       // Scroll-out: hero content fades + lifts as user scrolls past
       ScrollTrigger.create({
@@ -122,9 +107,6 @@ export function Hero() {
         animation: gsap
           .timeline()
           .to(contentRef.current, { y: -120, opacity: 0.2, ease: 'none' }, 0)
-          .to(blob1Ref.current, { y: 200, ease: 'none' }, 0)
-          .to(blob2Ref.current, { y: -150, ease: 'none' }, 0)
-          .to(blob3Ref.current, { y: 100, ease: 'none' }, 0)
           .to(scrollIndicatorRef.current, { opacity: 0, ease: 'none' }, 0),
       })
     }, heroRef)
@@ -140,70 +122,57 @@ export function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[100svh] flex items-center overflow-hidden bg-background"
+      className="relative min-h-[100svh] flex items-center overflow-hidden bg-[#0B0D12] pt-[max(4rem,env(safe-area-inset-top))] sm:pt-20"
     >
-      {/* Animated mesh gradient background */}
-      <div className="absolute inset-0 -z-10">
+      {/* Full-bleed photo — z-0 (not negative) so it paints above section fallback bg */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/home-hero-bg.png"
+          alt=""
+          fill
+          priority
+          quality={90}
+          sizes="100vw"
+          className="object-cover object-[28%_52%] sm:object-[32%_50%] lg:object-[36%_48%] xl:object-[38%_48%]"
+        />
+        {/* ~10% global dim so the scene recedes slightly */}
+        <div className="absolute inset-0 bg-black/10 pointer-events-none" aria-hidden />
+        {/* Typographic column sits in open left; keep mid/right image bright */}
         <div
-          ref={blob1Ref}
-          className="absolute top-[10%] left-[5%] w-[55vw] h-[55vw] max-w-[800px] max-h-[800px] rounded-full bg-[#b61d23]/30 blur-[120px]"
+          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(11,13,18,0.84)_0%,rgba(11,13,18,0.45)_34%,rgba(11,13,18,0.12)_52%,transparent_72%)]"
+          aria-hidden
         />
         <div
-          ref={blob2Ref}
-          className="absolute bottom-[5%] right-[5%] w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] rounded-full bg-[#ff3a44]/20 blur-[100px]"
+          className="absolute inset-0 bg-gradient-to-t from-[#0B0D12]/45 via-transparent to-[#0B0D12]/25"
+          aria-hidden
         />
-        <div
-          ref={blob3Ref}
-          className="absolute top-[40%] right-[20%] w-[25vw] h-[25vw] max-w-[400px] max-h-[400px] rounded-full bg-[#7a0e14]/30 blur-[80px]"
-        />
-        {/* Grid overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.06]"
-          style={{
-            backgroundImage:
-              'linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)',
-            backgroundSize: '64px 64px',
-            maskImage:
-              'radial-gradient(ellipse at center, black 30%, transparent 80%)',
-          }}
-        />
-        {/* Noise overlay */}
-        <div className="absolute inset-0 opacity-[0.04] mix-blend-overlay bg-[url('data:image/svg+xml;utf8,<svg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>')]" />
       </div>
 
       <div
         ref={contentRef}
-        className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 w-full py-12 sm:py-16"
+        className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:pl-12 lg:pr-10 xl:pl-16 py-14 sm:py-16 md:py-20"
       >
-        {/* Eyebrow */}
-        <div
-          ref={eyebrowRef}
-          className="flex items-center gap-3 mb-6 sm:mb-8"
-        >
-          <span className="h-px w-10 sm:w-16 bg-[#b61d23]" />
-          <span className="text-xs sm:text-sm uppercase tracking-[0.3em] text-[#b61d23] font-semibold">
-            Lifestyle-Driven Brand Building
-          </span>
-        </div>
+        <div className="max-w-[min(34rem,92vw)] sm:max-w-[min(38rem,55vw)] lg:max-w-[min(40rem,48%)]">
+          {/* Headline */}
+          <h1
+            ref={headlineRef}
+            className="font-display flex flex-col gap-2 sm:gap-3 text-[clamp(2.35rem,6.8vw,5.85rem)] font-bold text-foreground leading-[0.98] tracking-[-0.02em] mb-5 sm:mb-7 [text-shadow:0_4px_40px_rgba(0,0,0,0.55)]"
+          >
+            <span className="block hero-headline-line text-balance">{heroContent.headlineLine1}</span>
+            <span className="block hero-headline-line text-balance text-foreground/95">{heroContent.headlineLine2}</span>
+          </h1>
 
-        {/* Headline */}
-        <h1
-          ref={headlineRef}
-          className="font-display text-[clamp(2rem,6vw,5.5rem)] font-black text-foreground leading-[0.95] tracking-tight max-w-[18ch] mb-6 sm:mb-8"
-        >
-          {heroContent.headline}
-        </h1>
+          {heroContent.subline.trim() ? (
+            <p
+              ref={sublineRef}
+              className="font-display text-[clamp(1.15rem,2.75vw,2.2rem)] font-medium text-foreground/88 leading-[1.25] tracking-[-0.01em] text-balance max-w-[36ch] mb-8 sm:mb-10 [text-shadow:0_2px_24px_rgba(0,0,0,0.5)]"
+            >
+              {heroContent.subline.trim()}
+            </p>
+          ) : null}
 
-        {/* Summary */}
-        <p
-          ref={summaryRef}
-          className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-2xl leading-relaxed mb-8 sm:mb-10"
-        >
-          {heroContent.quickSummary}
-        </p>
-
-        {/* CTAs */}
-        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
+          {/* CTAs */}
+          <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
           <Button
             ref={primaryButtonRef}
             asChild
@@ -232,6 +201,7 @@ export function Hero() {
               </span>
             </Link>
           </Button>
+        </div>
         </div>
       </div>
 
